@@ -4,6 +4,7 @@
 typedef struct pilha pilha_t;
 pilha_t* criar_pilha(int capacidade);
 int push(pilha_t* p, int valor);
+int tamnho_pilha(pilha_t* p);
 
 
 

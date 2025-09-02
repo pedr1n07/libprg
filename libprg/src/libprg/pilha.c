@@ -35,3 +35,7 @@ int push(pilha_t* p, int valor) {
 
     return 0;
 }
+
+int tamnho_pilha(pilha_t* p) {
+    return p->topo + 1;
+}
