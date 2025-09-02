@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 
-typedef struct Pilha {
+typedef struct pilha {
     int* elementos;
     int topo;
     int capacidade;
@@ -22,4 +22,16 @@ pilha_t* criar_pilha(int capacidade) {
     p->capacidade = capacidade;
 
     return p;
+}
+
+int push(pilha_t* p, int valor) {
+
+    if (p->topo +1 >= p->capacidade) {
+        printf("Não é possivel empilhar");
+        return 1;
+    }
+    p->topo++;
+    p->elementos[p->topo] = valor;
+
+    return 0;
 }
