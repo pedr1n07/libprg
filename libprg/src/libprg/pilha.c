@@ -24,18 +24,39 @@ pilha_t* criar_pilha(int capacidade) {
     return p;
 }
 
-int push(pilha_t* p, int valor) {
+void empilhar(pilha_t* pilha,int valor) {
 
-    if (p->topo +1 >= p->capacidade) {
-        printf("Não é possivel empilhar");
-        return 1;
+    if (pilha->topo == (pilha->capacidade + 1)) {
+        pilha->capacidade *= 2;
+        pilha->elementos = realloc(pilha->elementos, pilha->capacidade * sizeof(int));
     }
-    p->topo++;
-    p->elementos[p->topo] = valor;
 
-    return 0;
+    pilha->topo++;
+    pilha->elementos[pilha->topo] = valor;
 }
 
-int tamnho_pilha(pilha_t* p) {
+
+int tamanho_pilha(pilha_t* p) {
     return p->topo + 1;
 }
+
+void destruir(pilha_t* pilha) {
+
+
+}
+
+
+
+// int push(pilha_t* p, int valor) {
+//
+//     if (p->topo +1 >= p->capacidade) {
+//         printf("Não é possivel empilhar");
+//         return 1;
+//     }
+//     p->topo++;
+//     p->elementos[p->topo] = valor;
+//
+//     return 0;
+// }
+
+
