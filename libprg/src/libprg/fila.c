@@ -35,7 +35,7 @@ void enfileirar(fila_t* fila, int valor) {
     }
 
     fila->elementos[fila->fim] = valor;
-    fila->fim++;
+    fila->fim = (fila->fim + 1) % fila->capacidade;
     fila->tamanho++;
 }
 
@@ -50,10 +50,8 @@ int desinfileirar(fila_t* fila) {
 }
 
 bool vazia(fila_t* fila) {
-    return fila->tamanho == 0;
+    return fila->tamanho == 0 &&  fila->inicio == -1;
 }
-
-
 
 
 
