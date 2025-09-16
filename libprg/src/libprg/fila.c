@@ -47,6 +47,7 @@ bool cheia(fila_t* fila) {
 int desinfileirar(fila_t* fila) {
     return fila->elementos[fila->inicio];
     fila->inicio++;
+    fila->tamanho--;
 }
 
 bool vazia(fila_t* fila) {

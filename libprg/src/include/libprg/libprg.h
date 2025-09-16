@@ -20,4 +20,13 @@ bool cheia(fila_t* fila);
 int desinfileirar(fila_t* fila);
 bool vazia(fila_t* fila);
 
+// /---Lista Linear---/ //
+typedef struct lista_linear lista_linear_t;
+lista_linear_t* criar(int capacidade);
+bool lista_cheia (lista_linear_t* lista);
+void inserir(lista_linear_t* lista, int valor);
+int buscar(lista_linear_t* lista, int valor);
+
+
+
 #endif
