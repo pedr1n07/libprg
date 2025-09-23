@@ -1,10 +1,10 @@
 //
 // Created by aluno on 09/09/2025.
 //
+#include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "libprg/libprg.h"
 
 typedef struct fila {
     int inicio;
@@ -14,22 +14,39 @@ typedef struct fila {
     int fim;
 } fila_t;
 
-fila_t* criar_fila(int capacidade) {
 
+fila_t* criar_fila(int capacidade) {
     fila_t* f = malloc(sizeof(fila_t));
+    if (!f) {
+        exit(EXIT_FAILURE);
+    }
 
     f->elementos = malloc(capacidade * sizeof(int));
+    if (!f->elementos) {
+        free(f);
+        exit(EXIT_FAILURE);
+    }
 
     f->inicio = 0;
     f->fim = 0;
-    f->elementos = 0;
+    f->tamanho = 0;
     f->capacidade = capacidade;
 
     return f;
 }
 
-void enfileirar(fila_t* fila, int valor) {
 
+bool cheia(fila_t* fila) {
+    return fila->tamanho == fila->capacidade;
+}
+
+
+bool vazia(fila_t* fila) {
+    return fila->tamanho == 0;
+}
+
+
+void enfileirar(fila_t* fila, int valor) {
     if (cheia(fila)) {
         exit(EXIT_FAILURE);
     }
@@ -39,27 +56,32 @@ void enfileirar(fila_t* fila, int valor) {
     fila->tamanho++;
 }
 
-bool cheia(fila_t* fila) {
-    return fila->tamanho >= fila->capacidade;
-}
-
-
 int desinfileirar(fila_t* fila) {
-    return fila->elementos[fila->inicio];
-    fila->inicio++;
+    if (vazia(fila)) {
+        printf("Fila vazia! Não é possível desinfileirar.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    int valor = fila->elementos[fila->inicio];
+    fila->inicio = (fila->inicio + 1) % fila->capacidade;
     fila->tamanho--;
-}
-
-bool vazia(fila_t* fila) {
-    return fila->tamanho == 0 &&  fila->inicio == -1;
+    return valor;
 }
 
 
+void destruir_fila(fila_t* fila) {
+    free(fila->elementos);
+    free(fila);
+}
 
 
-
-
-
+void exibir(fila_t* fila) {
+    printf("Fila: ");
+    for (int i = 0; i < fila->tamanho; i++) {
+        int indeci = (fila->inicio + i) % fila->capacidade;
+        printf("%d ", fila->elementos[indeci]);
+    }
+}
 
 // criar_fila
 // enfilherrar

@@ -18,6 +18,9 @@ void enfileirar(fila_t* fila, int valor);
 bool cheia(fila_t* fila);
 int desinfileirar(fila_t* fila);
 bool vazia(fila_t* fila);
+void destruir_fila(fila_t* fila);
+void exibir(fila_t* fila);
+
 
 // /---Lista Linear---/ //
 typedef struct lista_linear lista_linear_t;
@@ -25,6 +28,11 @@ lista_linear_t* criar(int capacidade);
 bool lista_cheia (lista_linear_t* lista);
 void inserir(lista_linear_t* lista, int valor);
 int buscar(lista_linear_t* lista, int valor);
+bool lista_vazia(lista_linear_t* lista);
+void remover(lista_linear_t* lista);
+void destruir(lista_linear_t* lista);
+void exibir(lista_linear_t* lista);
+int primeiro(lista_linear_t* lista);
 
 
 
