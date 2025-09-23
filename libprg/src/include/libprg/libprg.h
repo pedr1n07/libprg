@@ -11,7 +11,6 @@ void destruir(pilha_t* pilha);
 
 
 
-
 // /---fila---/
 typedef struct fila fila_t;
 fila_t* criar_fila(int capacidade);
