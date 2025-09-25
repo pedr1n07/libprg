@@ -52,7 +52,7 @@ int buscar(lista_linear_t* lista, int valor) {
 // Função para remover um valor da lista (do início, típico de uma fila)
 void remover(lista_linear_t* lista) {
     if (lista_vazia(lista)) {
-        printf(EXIT_FAILURE);
+      exit(EXIT_FAILURE);
         return;
     }
     // // Desloca os elementos pra esquerda
@@ -63,13 +63,13 @@ void remover(lista_linear_t* lista) {
 }
 
 
-void destruir(lista_linear_t* lista) {
+void destruir_lista(lista_linear_t* lista) {
     free(lista->elementos);  // Libera a memória dos elementos
     free(lista);  // Libera a memória da estrutura
 }
 
 
-void exibir(lista_linear_t* lista) {
+void exibir_lista(lista_linear_t* lista) {
 
     for (int i = 0; i < lista->tamanho; i++) {
         lista->elementos[i];
@@ -79,7 +79,7 @@ void exibir(lista_linear_t* lista) {
 
 int primeiro(lista_linear_t* lista) {
     if (lista_vazia(lista)) {
-        printf(EXIT_FAILURE);
+        exit(EXIT_FAILURE);
         return -1;
     }
     return lista->elementos[0];

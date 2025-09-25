@@ -30,10 +30,13 @@ void inserir(lista_linear_t* lista, int valor);
 int buscar(lista_linear_t* lista, int valor);
 bool lista_vazia(lista_linear_t* lista);
 void remover(lista_linear_t* lista);
-void destruir(lista_linear_t* lista);
-void exibir(lista_linear_t* lista);
+void destruir_lista(lista_linear_t* lista);
+void exibir_lista(lista_linear_t* lista);
 int primeiro(lista_linear_t* lista);
 
 
-
+// /---Listas Encadeada---/ //
+typedef struct no no_t;
+no_t* criar_lista_enc(int valor);
+no_t* adicionar_elemento(no_t* inicio, int valor);
 #endif
