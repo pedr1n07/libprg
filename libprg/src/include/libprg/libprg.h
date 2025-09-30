@@ -38,5 +38,8 @@ int primeiro(lista_linear_t* lista);
 // /---Listas Encadeada---/ //
 typedef struct no no_t;
 no_t* criar_lista_enc(int valor);
-no_t* adicionar_elemento(no_t* inicio, int valor);
+void adicionar_lista_enc(no_t** inicio, int valor);
+no_t* buscar_lista_enc(no_t** inicio, int valor);
+void remover_lista_enc(no_t** inicio, int valor);
+
 #endif

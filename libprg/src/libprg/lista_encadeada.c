@@ -3,6 +3,7 @@
 //
 
 #include <libprg/libprg.h>
+#include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 
@@ -10,7 +11,7 @@ typedef struct no {
     int valor;
     struct no* proximo;
 
-}no_t;
+} no_t;
 
 
 no_t* criar_lista_enc(int valor) {
@@ -22,15 +23,41 @@ no_t* criar_lista_enc(int valor) {
     return  no;
 }
 
-no_t* adicionar_elemento(no_t* inicio, int valor) {
+void adicionar_lista_enc(no_t** inicio, int valor) {
 
-    no_t* novo_no = criar(valor);
-    novo_no->proximo = inicio;
-    inicio = novo_no;
-
-    return inicio;
+    no_t* novo_no = criar_lista_enc(valor);
+    novo_no->proximo = *inicio;
+    *inicio = novo_no;
 
 }
 
+no_t* buscar_lista_enc(no_t** inicio, int valor) {
+
+    no_t* atual = *inicio;
+
+    while (atual != NULL) {
+        if (atual->valor == valor) {
+            return atual;
+        }else {
+            atual = atual->proximo;
+        }
+    }
+    return NULL;
+}
+
+void remover_lista_enc(no_t** inicio, int valor) {
+    no_t* atual = *inicio;
+    no_t* anterior = NULL;
+
+    while (atual)
+    if (atual->valor == valor) {
+
+        anterior->proximo = atual->proximo;
+    }
+
+    free(atual);
+}
+
+void destruir
 //criar
 //adicionar
