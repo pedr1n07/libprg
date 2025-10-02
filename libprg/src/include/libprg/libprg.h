@@ -24,7 +24,7 @@ void exibir(fila_t* fila);
 
 // /---Lista Linear---/ //
 typedef struct lista_linear lista_linear_t;
-lista_linear_t* criar(int capacidade);
+lista_linear_t* criar_lista_linear(int capacidade, bool ordenada);
 bool lista_cheia (lista_linear_t* lista);
 void inserir(lista_linear_t* lista, int valor);
 int buscar(lista_linear_t* lista, int valor);
@@ -41,5 +41,5 @@ no_t* criar_lista_enc(int valor);
 void adicionar_lista_enc(no_t** inicio, int valor);
 no_t* buscar_lista_enc(no_t** inicio, int valor);
 void remover_lista_enc(no_t** inicio, int valor);
-
+void destruir_lista_enc(no_t** inicio);
 #endif

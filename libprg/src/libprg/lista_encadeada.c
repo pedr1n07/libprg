@@ -49,15 +49,25 @@ void remover_lista_enc(no_t** inicio, int valor) {
     no_t* atual = *inicio;
     no_t* anterior = NULL;
 
-    while (atual)
-    if (atual->valor == valor) {
+    while (atual) {
+        if (atual->valor == valor) {
 
-        anterior->proximo = atual->proximo;
+            anterior->proximo = atual->proximo;
+        }
     }
-
     free(atual);
 }
 
-void destruir
+void destruir_lista_enc(no_t** inicio) {
+
+    no_t* atual = *inicio;
+
+    while (atual) {
+        no_t* proximo = atual->proximo
+        free(atual);
+        if (proximo == *inicio) break;
+        atual = proximo;
+    }
+}
 //criar
 //adicionar

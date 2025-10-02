@@ -13,14 +13,16 @@ typedef struct lista_linear {
     int* elementos;
     int tamanho;
     int capacidade;
+    bool ordenada;
 } lista_linear_t;
 
 // Função para criar a lista
-lista_linear_t* criar(int capacidade) {
+lista_linear_t* criar_lista_linear(int capacidade, bool ordenada) {
     lista_linear_t* lista = malloc(sizeof(lista_linear_t));
     lista->elementos = malloc(sizeof(int) * capacidade);
     lista->tamanho = 0;
     lista->capacidade = capacidade;
+    lista->ordenada = ordenada;
     return lista;
 }
 
