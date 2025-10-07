@@ -65,6 +65,16 @@ void destruir_lista_enc(no_t** inicio) {
     while (atual) {
         no_t* proximo = atual->proximo;
         free(atual);
+        atual = proximo;
+    }
+}
+
+void destruir_lista_enc_circular(no_t** inicio) {
+    no_t* atual = *inicio;
+
+    while (atual) {
+        no_t* proximo = atual->proximo;
+        free(atual);
         if (proximo == *inicio) break;
         atual = proximo;
     }
