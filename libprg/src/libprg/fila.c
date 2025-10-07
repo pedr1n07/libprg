@@ -36,7 +36,7 @@ fila_t* criar_fila(int capacidade) {
 }
 
 
-bool cheia(fila_t* fila) {
+bool fila_cheia(fila_t* fila) {
     return fila->tamanho == fila->capacidade;
 }
 
@@ -47,7 +47,7 @@ bool vazia(fila_t* fila) {
 
 
 void enfileirar(fila_t* fila, int valor) {
-    if (cheia(fila)) {
+    if (fila_cheia(fila)) {
         exit(EXIT_FAILURE);
     }
 

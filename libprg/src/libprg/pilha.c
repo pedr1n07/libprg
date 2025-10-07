@@ -10,42 +10,68 @@ typedef struct pilha {
 } pilha_t;
 
 pilha_t* criar_pilha(int capacidade) {
-
-    //Criar a estrutura pilha e alocar memória
     pilha_t* p = malloc(sizeof(pilha_t));
+    if (p == NULL) return NULL;
 
-    // Alocar memória para os elementos da pilha
-    p->elementos = (int*) malloc(sizeof(int) * capacidade);
+    p->elementos = malloc(capacidade * sizeof(int));
+    if (p->elementos == NULL) {
+        free(p);
+        return NULL;
+    }
 
-    //Definir os valores iniciais da pilha
     p->topo = -1;
     p->capacidade = capacidade;
 
     return p;
 }
 
-void empilhar(pilha_t* pilha,int valor) {
+int empilhar(pilha_t* p, int valor) {
+    if (p->topo >= p->capacidade - 1)
+        return 0; // pilha cheia
 
-    if (pilha->topo == (pilha->capacidade + 1)) {
-        pilha->capacidade *= 2;
-        pilha->elementos = realloc(pilha->elementos, pilha->capacidade * sizeof(int));
-    }
-
-    pilha->topo++;
-    pilha->elementos[pilha->topo] = valor;
+    p->elementos[++(p->topo)] = valor;
+    return 1;
 }
 
+int desempilhar(pilha_t* p, int* valor) {
+    if (p->topo < 0)
+        return 0; // pilha vazia
+
+    *valor = p->elementos[(p->topo)--];
+    return 1;
+}
+
+int topo_pilha(pilha_t* p, int* valor) {
+    if (p->topo < 0)
+        return 0;
+
+    *valor = p->elementos[p->topo];
+    return 1;
+}
 
 int tamanho_pilha(pilha_t* p) {
     return p->topo + 1;
 }
 
-void destruir(pilha_t* pilha) {
+void imprimir_pilha(pilha_t* p) {
+    if (p->topo < 0) {
+        printf("Pilha vazia.\n");
+        return;
+    }
 
-
+    printf("Pilha (base -> topo): ");
+    for (int i = 0; i <= p->topo; i++) {
+        printf("%d ", p->elementos[i]);
+    }
+    printf("\n");
 }
 
-
+void destruir_pilha(pilha_t* p) {
+    if (p) {
+        free(p->elementos);
+        free(p);
+    }
+}
 
 // int push(pilha_t* p, int valor) {
 //
