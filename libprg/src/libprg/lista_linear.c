@@ -19,7 +19,7 @@ typedef struct lista_linear {
 // Função para criar a lista
 lista_linear_t* criar_lista_linear(int capacidade, bool ordenada) {
     lista_linear_t* lista = malloc(sizeof(lista_linear_t));
-    lista->elementos = malloc(sizeof(int) * capacidade);
+    (*lista).elementos = malloc(sizeof(int) * capacidade);
     lista->tamanho = 0;
     lista->capacidade = capacidade;
     lista->ordenada = ordenada;
@@ -27,7 +27,7 @@ lista_linear_t* criar_lista_linear(int capacidade, bool ordenada) {
 }
 
 
-void inserir(lista_linear_t* lista, int valor) {
+void inserir_lista_l(lista_linear_t* lista, int valor) {
     lista->elementos[lista->tamanho] = valor;
     lista->tamanho++;
 }
@@ -42,7 +42,7 @@ bool lista_vazia(lista_linear_t* lista) {
     return lista->tamanho == 0;
 }
 
-int buscar(lista_linear_t* lista, int valor) {
+int buscar_lista_l(lista_linear_t* lista, int valor) {
     for (int i = 0; i < lista->tamanho; ++i) {
         if (lista->elementos[i] == valor) {
             return i;
@@ -52,7 +52,7 @@ int buscar(lista_linear_t* lista, int valor) {
 }
 
 // Função para remover um valor da lista (do início, típico de uma fila)
-void remover(lista_linear_t* lista) {
+void remover_lista_l(lista_linear_t* lista) {
     if (lista_vazia(lista)) {
       exit(EXIT_FAILURE);
         return;
@@ -65,13 +65,13 @@ void remover(lista_linear_t* lista) {
 }
 
 
-void destruir_lista(lista_linear_t* lista) {
+void destruir_lista_l(lista_linear_t* lista) {
     free(lista->elementos);  // Libera a memória dos elementos
     free(lista);  // Libera a memória da estrutura
 }
 
 
-void exibir_lista(lista_linear_t* lista) {
+void exibir_lista_l(lista_linear_t* lista) {
 
     for (int i = 0; i < lista->tamanho; i++) {
         lista->elementos[i];
@@ -79,7 +79,7 @@ void exibir_lista(lista_linear_t* lista) {
 }
 
 
-int primeiro(lista_linear_t* lista) {
+int primeiro_lista_l(lista_linear_t* lista) {
     if (lista_vazia(lista)) {
         exit(EXIT_FAILURE);
         return -1;
