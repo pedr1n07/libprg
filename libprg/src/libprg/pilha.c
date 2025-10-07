@@ -42,12 +42,12 @@ int desempilhar(pilha_t* p) {
     return elemento_removido;
 }
 
-int topo_pilha(pilha_t* p, int* valor) {
+int topo_pilha(pilha_t* p) {
     if (p->topo < 0)
         return 0;
 
-    *valor = p->elementos[p->topo];
-    return 1;
+    int topo = p->elementos[p->topo];
+    return topo;
 }
 
 int tamanho_pilha(pilha_t* p) {
