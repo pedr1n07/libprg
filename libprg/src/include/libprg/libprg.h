@@ -28,13 +28,13 @@ void exibir(fila_t* fila);
 typedef struct lista_linear lista_linear_t;
 lista_linear_t* criar_lista_linear(int capacidade, bool ordenada);
 bool lista_cheia (lista_linear_t* lista);
-void inserir(lista_linear_t* lista, int valor);
-int buscar(lista_linear_t* lista, int valor);
+void inserir_lista_l(lista_linear_t* lista, int valor);
+int buscar_lista_l(lista_linear_t* lista, int valor);
 bool lista_vazia(lista_linear_t* lista);
-void remover(lista_linear_t* lista);
-void destruir_lista(lista_linear_t* lista);
-void exibir_lista(lista_linear_t* lista);
-int primeiro(lista_linear_t* lista);
+void remover_lista_l(lista_linear_t* lista);
+int primeiro_lista_l(lista_linear_t* lista);
+void exibir_lista_l(lista_linear_t* lista);
+void destruir_lista_l(lista_linear_t* lista);
 
 
 // /---Listas Encadeada---/ //
