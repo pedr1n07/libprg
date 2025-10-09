@@ -41,7 +41,7 @@ void destruir_lista_l(lista_linear_t* lista);
 typedef struct no no_t;
 no_t* criar_lista_enc(int valor);
 void adicionar_lista_enc(no_t** inicio, int valor);
-no_t* buscar_lista_enc(no_t** inicio, int valor);
+no_t* buscar_lista_enc(no_t* inicio, int valor);
 void remover_lista_enc(no_t** inicio, int valor);
 void destruir_lista_enc(no_t** inicio);
 void destruir_lista_enc_circular(no_t** inicio);
