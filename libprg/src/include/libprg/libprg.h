@@ -29,12 +29,16 @@ typedef struct lista_linear lista_linear_t;
 lista_linear_t* criar_lista_linear(int capacidade, bool ordenada);
 bool lista_cheia (lista_linear_t* lista);
 void inserir_lista_l(lista_linear_t* lista, int valor);
+void inserir_nao_ordenada(lista_linear_t* lista, int valor);
+void inserir_ordenada(lista_linear_t* lista, int valor);
 int buscar_lista_l(lista_linear_t* lista, int valor);
 bool lista_vazia(lista_linear_t* lista);
-void remover_lista_l(lista_linear_t* lista);
+void remover_lista_l(lista_linear_t* lista, int valor);
+void remover_da_posicao(lista_linear_t* lista, int posicao);
 int primeiro_lista_l(lista_linear_t* lista);
 void exibir_lista_l(lista_linear_t* lista);
 void destruir_lista_l(lista_linear_t* lista);
+int buscar_na_posicao(lista_linear_t *lista, int posicao);
 
 
 // /---Listas Encadeada---/ //

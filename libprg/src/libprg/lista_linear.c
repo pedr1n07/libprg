@@ -41,11 +41,32 @@ bool lista_vazia(lista_linear_t* lista) {
 
 // Inserir elemento no final
 void inserir_lista_l(lista_linear_t* lista, int valor) {
+
     if (lista_cheia(lista)) {
-        printf("Erro: lista cheia, não é possível inserir.\n");
-        return;
+        lista->elementos = realloc(lista->elementos, sizeof(int) * lista->capacidade*2); // fazer tratamento do realloc
+        lista->capacidade *=2;
     }
-    lista->elementos[lista->tamanho++] = valor;
+        if (lista->elementos) {
+            if (lista->ordenada) {
+                inserir_ordenada(lista, valor);
+            }else inserir_nao_ordenada(lista, valor);
+        }
+}
+
+void inserir_nao_ordenada(lista_linear_t* lista, int valor) {
+    lista->elementos[lista->tamanho] = valor;
+    lista->tamanho++;
+}
+
+void inserir_ordenada(lista_linear_t *lista, int valor) {
+    for (int i = lista->tamanho - 1; i >= 0; --i) {
+        if (lista->elementos[i] < valor) {
+            lista->elementos[i+1] = valor;
+            break;
+        }
+        lista->elementos[i] = lista->elementos[i+1];
+    }
+    lista->tamanho++;
 }
 
 // Buscar elemento
@@ -58,16 +79,34 @@ int buscar_lista_l(lista_linear_t* lista, int valor) {
     return -1; // não encontrado
 }
 
+int limitar_posicao(lista_linear_t* lista, int posicao) {
+
+    if (posicao > lista->tamanho) return lista->tamanho;
+    if (posicao < 0) return 0;
+
+}
+
 // Remover elemento do início (como uma fila)
-void remover_lista_l(lista_linear_t* lista) {
-    if (lista_vazia(lista)) {
-        printf("Erro: lista vazia, não é possível remover.\n");
-        return;
+void remover_lista_l(lista_linear_t* lista, int valor) {
+
+    int indice = buscar_lista_l(lista, valor);
+    if (indice > -1) {
+        lista->elementos[indice] = lista->elementos[lista->tamanho - 1];
+        lista->tamanho--;
     }
-    for (int i = 0; i < lista->tamanho - 1; ++i) {
-        lista->elementos[i] = lista->elementos[i + 1];
-    }
-    lista->tamanho--;
+    // if (lista_vazia(lista)) {
+    //
+    // }
+    // for (int i = 0; i < lista->tamanho - 1; ++i) {
+    //     lista->elementos[i] = lista->elementos[i + 1];
+    // }
+    // lista->tamanho--;
+}
+
+
+void remover_da_posicao(lista_linear_t* lista, int posicao) {
+    int valor = lista->elementos[posicao];
+    remover_lista_l(lista, valor);
 }
 
 // Retornar o primeiro elemento
@@ -99,4 +138,17 @@ void destruir_lista_l(lista_linear_t* lista) {
         free(lista->elementos);
         free(lista);
     }
+}
+
+
+int buscar_na_posicao(lista_linear_t *lista, int posicao) {
+    return lista->elementos[posicao];
+}
+
+void inserir_na_posicao(lista_linear_t* lista, int valor, int posicao) {
+
+    int indice = limitar_posicao(lista, posicao);
+
+    inserir_lista_l(lista, lista->elementos[indice]);
+    lista->elementos[indice] = valor;
 }
