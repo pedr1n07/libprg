@@ -36,6 +36,13 @@ fila_t* criar_fila(int capacidade) {
 }
 
 
+int tamanho_fila(fila_t* fila) {
+    if (fila->tamanho == NULL)
+        return 0;
+    return fila->tamanho;
+}
+
+
 bool fila_cheia(fila_t* fila) {
     return fila->tamanho == fila->capacidade;
 }

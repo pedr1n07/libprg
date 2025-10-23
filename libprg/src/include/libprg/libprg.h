@@ -18,6 +18,7 @@ int pilha_cheia(pilha_t *p);
 // /---fila---/
 typedef struct fila fila_t;
 fila_t* criar_fila(int capacidade);
+int tamanho_fila(fila_t* fila);
 void enfileirar(fila_t* fila, int valor);
 bool fila_cheia(fila_t* fila);
 int desinfileirar(fila_t* fila);
