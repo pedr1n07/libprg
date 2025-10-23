@@ -74,6 +74,19 @@ void destruir_pilha(pilha_t* p) {
     }
 }
 
+int vazia_pilha(pilha_t *p) {
+    if (p == NULL)
+        return 1;
+    return (p->topo < 0);
+
+}
+
+int pilha_cheia(pilha_t *p) {
+    if (p == NULL)
+        return 0;
+    return (p->topo >= p->capacidade - 1);
+}
+
 // int push(pilha_t* p, int valor) {
 //
 //     if (p->topo +1 >= p->capacidade) {

@@ -11,6 +11,8 @@ int topo_pilha(pilha_t* p);
 int tamanho_pilha(pilha_t* p);
 void imprimir_pilha(pilha_t* p);
 void destruir_pilha(pilha_t* p);
+int vazia_pilha(pilha_t *p);
+int pilha_cheia(pilha_t *p);
 
 
 // /---fila---/
@@ -39,6 +41,7 @@ int primeiro_lista_l(lista_linear_t* lista);
 void exibir_lista_l(lista_linear_t* lista);
 void destruir_lista_l(lista_linear_t* lista);
 int buscar_na_posicao(lista_linear_t *lista, int posicao);
+void inserir_na_posicao(lista_linear_t* lista, int valor, int posicao);
 
 
 // /---Listas Encadeada---/ //
