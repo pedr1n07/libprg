@@ -53,4 +53,13 @@ no_t* buscar_lista_enc(no_t* inicio, int valor);
 void remover_lista_enc(no_t** inicio, int valor);
 void destruir_lista_enc(no_t** inicio);
 void destruir_lista_enc_circular(no_t** inicio);
+
+
+
+// /---Bubble sort---/ //
+void bubble_sort(int array[], int tamanho);
+
+
+
+
 #endif

@@ -1,12 +1,13 @@
 //
 // Created by aluno on 06/11/2025.
 //
+#include <libprg/libprg.h>
+
 
 void bubble_sort(int array[], int tamanho) {
 
-    int troca;
     for (int i = 0; i < tamanho - 1; i++) {
-        troca = 0;
+        int troca = 0;
         for (int j = 0; j < tamanho - i - 1; j++) {
             if (array[j] > array[j + 1]) {
                 int aux = array[j];
@@ -17,5 +18,4 @@ void bubble_sort(int array[], int tamanho) {
         }
         if (troca) break;
     }
-    return;
 }
